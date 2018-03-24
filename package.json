@@ -1,0 +1,11 @@
+{
+  "name": "perfomer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "perfomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cocolbell",
+  "license": "ISC"
+}
