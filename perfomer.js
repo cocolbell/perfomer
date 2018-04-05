@@ -76,12 +76,18 @@
         })()
     }
 
-    _perfomer.prototype.send = function (url, data, opt) {
+    _perfomer.prototype.send = function (url, opt) {
         var _this = this;
+        opt && (function(){
+            if(!(opt.callback && typeof opt.callback == 'function')) {
+                throw 'opt.callback is not a fucntion' 
+                return;
+            }
+        }())
         var _default = {
             method : "POST",
             data : _this.getData(true),
-            callback : function () {
+            callback : function (res) {
                 console.log("perfomer send success");
             },
         };
@@ -91,6 +97,7 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log(xhr.responseText);
+                _default.callback(xhr.responseText)
             } else {
                 console.warn("perfomer send error");
             }
